@@ -1,5 +1,6 @@
 import User from "../models/User.js";
 import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
 
 
 
@@ -30,27 +31,104 @@ export const register = async (req, res) => {
 		await newUser.save()
 
 		res.json({
-			newUser, message: "Регисрация прошла успешно."
+			newUser, message: "Регистрация прошла успешно."
 		})
 
 
 	} catch (error) {
-
+		res.json({ message: "Ошибка при создании пользователя" })
 	}
 }
+
+
+
+
+
+
 // Login user
+
 export const login = async (req, res) => {
+
 	try {
 
-	} catch (error) {
+		const { username, password } = req.body
+		const user = await User.findOne({ username })
+
+		if (!user) {
+			return res.json({
+				message: "Такого пользователя не существует",
+			})
+		}
+
+		const isPasswordCorrect = await bcrypt.compare(password, user.password)
+
+		if (!isPasswordCorrect) {
+			res.json({
+				message: "Пароль неправильный",
+			})
+		}
+
+
+		const token = jwt.sign({
+			id: user._id,
+		},
+			process.env.JWT_SECRET,
+			{ expiresIn: "30d", }
+		);
+
+		res.json({
+			token,
+			user,
+			message: "Вы вошли в систему",
+		})
+
+
+
+
+
 
 	}
+
+
+	catch (error) {
+		res.json({ message: "Ошибка при авторизации" })
+	}
 }
+
+
+
+
+
+
+
+
 // Get Me
 export const getMe = async (req, res) => {
+
 	try {
 
-	} catch (error) {
+		const user = await User.findById(req.userId);
 
+		if (!user) {
+			return res.json({
+				message: "Такого пользователя не существует",
+			})
+		}
+
+		const token = jwt.sign({
+			id: user._id,
+		},
+			process.env.JWT_SECRET,
+			{ expiresIn: "30d", }
+		);
+
+
+		res.json({
+			user, token
+		})
+
+
+	} catch (error) {
+		res.json({ message: "Нет доступа" })
 	}
 }

@@ -24,6 +24,7 @@ app.use(express.json());
 
 
 // Router 
+//http://localhost:3002
 
 app.use("/api/auth", authRoute);
 
