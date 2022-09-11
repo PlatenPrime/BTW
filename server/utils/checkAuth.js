@@ -7,7 +7,8 @@ export const checkAuth = (req, res, next) => {
 		try {
 			const decoded = jwt.verify(token, process.env.JWT_SECRET)
 
-			req.userId = decoded.userId
+			console.log(decoded);
+			req.userId = decoded.id
 
 			next()
 

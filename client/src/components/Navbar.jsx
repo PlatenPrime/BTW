@@ -6,7 +6,10 @@ import { toast } from 'react-toastify';
 
 const Navbar = () => {
 
+
+
 	const isAuth = useSelector(checkIsAuth);
+	console.log(isAuth);
 	const dispatch = useDispatch();
 
 
