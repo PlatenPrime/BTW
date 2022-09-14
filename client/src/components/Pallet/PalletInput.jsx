@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const PalletInput = () => {
+const PalletInput = ({ pallet, setPallet }) => {
 
 
 	const [art, setArt] = useState("");
 	const [pieces, setPieces] = useState(0);
-	const [pallet, setPallet] = useState([])
+
 
 
 	const handlePush = () => {
@@ -25,12 +25,12 @@ const PalletInput = () => {
 
 	return (
 
-		<form className='w-1/3 mx-auto py-10'
+		<form className='w-3/4 mx-auto py-10 flex flex-row px-2'
 
 
 			onSubmit={e => e.preventDefault()}
 		>
-			<label className='text-xs text-white opacity-70'>
+			<label className='text-xs text-white opacity-70 px-2'>
 				Артикул:
 				<input
 					type='text'
@@ -41,7 +41,7 @@ const PalletInput = () => {
 				/>
 			</label>
 
-			<label className='text-xs text-white opacity-70'>
+			<label className='text-xs text-white opacity-70 px-2'>
 				Количество:
 				<input
 					type='number'
@@ -54,7 +54,8 @@ const PalletInput = () => {
 
 
 
-			<button onClick={handlePush}>ДОБАВИТЬ АРТИКУЛ</button>
+			<button className='px-2 text-white' onClick={handlePush}>Добавить</button>
+			<button className='px-2 text-white' onClick={handlePush}>Отменить</button>
 
 
 
