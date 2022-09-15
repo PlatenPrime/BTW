@@ -34,9 +34,9 @@ const Navbar = () => {
 
 			{isAuth &&
 				(<ul className='flex gap-8'>
-					<li><NavLink to={"/"} className='text-xs text-gray-400 hover:text-white' style={({ isActive }) => isActive ? activeStyles : undefined} >Главная</NavLink></li>
-					<li><NavLink to={"pallets"} className='text-xs text-gray-400 hover:text-white' style={({ isActive }) => isActive ? activeStyles : undefined}>Паллеты</NavLink></li>
-					<li><NavLink to={"new"} className='text-xs text-gray-400 hover:text-white' style={({ isActive }) => isActive ? activeStyles : undefined}>Создать паллет</NavLink></li>
+					<li><NavLink to={"/"} className='text-lg text-black hover:text-white' style={({ isActive }) => isActive ? activeStyles : undefined} >Главная</NavLink></li>
+					<li><NavLink to={"pallets"} className='text-lg text-black hover:text-white' style={({ isActive }) => isActive ? activeStyles : undefined}>Паллеты</NavLink></li>
+					<li><NavLink to={"new"} className='text-lg text-black hover:text-white' style={({ isActive }) => isActive ? activeStyles : undefined}>Создать паллет</NavLink></li>
 				</ul>)
 			}
 

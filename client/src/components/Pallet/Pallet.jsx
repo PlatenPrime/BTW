@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PalletInput from './PalletInput';
+import PalletName from './PalletName';
 import PalletPosition from './PalletPosition';
 
 const Pallet = () => {
@@ -10,12 +11,14 @@ const Pallet = () => {
 
 
 	return (
-		<div>
+		<div className='flex flex-col justify-center'>
+
+			<PalletName />
 
 
 			{pallet.length > 0 &&
 
-				<ul>
+				<div className='border'>
 
 					{
 						pallet.map((position) => {
@@ -26,7 +29,7 @@ const Pallet = () => {
 					}
 
 
-				</ul>
+				</div>
 
 
 			}
@@ -36,7 +39,7 @@ const Pallet = () => {
 
 
 
-
+			<button className='bg-green-700 text-white p-3 mx-auto w-fit rounded-lg mt-4' >СОХРАНИТЬ</button>
 
 
 		</div>
