@@ -1,10 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Pallet from '../components/Pallet/Pallet';
+
+
+
+import PalletPosition from '../components/Pallet/PalletPosition';
+
+
 
 const AddPalletPage = () => {
+
+	;
+
 	return (
-		<div>
-			Add Pallet
-		</div>
+		<>
+
+			<Pallet />
+
+
+
+
+
+
+		</>
+
 	);
 };
 
