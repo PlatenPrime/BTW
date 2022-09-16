@@ -7,6 +7,33 @@ const Pallet = () => {
 
 	const [pallet, setPallet] = useState([]);
 
+	const [art, setArt] = useState("");
+	const [pieces, setPieces] = useState(0);
+
+
+
+	const addPosition = () => {
+
+		const position = {
+			id: pallet.length === 0 ? 1 : pallet[pallet.length - 1].id + 1,
+			art: art,
+			pieces: pieces,
+		};
+
+
+		setPallet(art !== "" ? [...pallet, position] : pallet);
+		setArt("");
+		setPieces(0);
+
+	}
+
+
+
+	const deletePosition = (id) => {
+		setPallet(pallet.filter((position) => position.id !== id));
+
+	};
+
 
 
 
@@ -23,7 +50,14 @@ const Pallet = () => {
 					{
 						pallet.map((position) => {
 							return (
-								<PalletPosition art={position.art} pieces={position.pieces} />
+								<PalletPosition
+									id={position.id}
+									key={position.id}
+									art={position.art}
+									pieces={position.pieces}
+									deletePosition={deletePosition}
+
+								/>
 							)
 						})
 					}
@@ -35,7 +69,14 @@ const Pallet = () => {
 			}
 
 
-			<PalletInput pallet={pallet} setPallet={setPallet} />
+			<PalletInput
+
+				art={art}
+				setArt={setArt}
+				pieces={pieces}
+				setPieces={setPieces}
+
+				addPosition={addPosition} />
 
 
 
