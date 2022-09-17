@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import PalletInput from './PalletInput';
-import PalletName from './PalletName';
+import PalletTitle from './PalletTitle';
 import PalletPosition from './PalletPosition';
 
 const Pallet = () => {
 
-	const [pallet, setPallet] = useState([]);
+	const [positions, setPositions] = useState([]);
 
 	const [art, setArt] = useState("");
 	const [pieces, setPieces] = useState(0);
@@ -15,13 +15,13 @@ const Pallet = () => {
 	const addPosition = () => {
 
 		const position = {
-			id: pallet.length === 0 ? 1 : pallet[pallet.length - 1].id + 1,
+			id: positions.length === 0 ? 1 : positions[positions.length - 1].id + 1,
 			art: art,
 			pieces: pieces,
 		};
 
 
-		setPallet(art !== "" ? [...pallet, position] : pallet);
+		setPositions(art !== "" ? [...positions, position] : positions);
 		setArt("");
 		setPieces(0);
 
@@ -30,7 +30,7 @@ const Pallet = () => {
 
 
 	const deletePosition = (id) => {
-		setPallet(pallet.filter((position) => position.id !== id));
+		setPositions(positions.filter((position) => position.id !== id));
 
 	};
 
@@ -38,17 +38,17 @@ const Pallet = () => {
 
 
 	return (
-		<div className='flex flex-col justify-center'>
+		<div className='flex flex-col justify-center mt-10' >
 
-			<PalletName />
+			<PalletTitle />
 
 
-			{pallet.length > 0 &&
+			{positions.length > 0 &&
 
 				<div className='border'>
 
 					{
-						pallet.map((position) => {
+						positions.map((position) => {
 							return (
 								<PalletPosition
 									id={position.id}

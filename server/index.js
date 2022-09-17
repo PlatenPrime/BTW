@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 
 import authRoute from "./routes/auth.js";
+import palletRoute from "./routes/pallets.js";
 
 
 const app = express();
@@ -27,6 +28,7 @@ app.use(express.json());
 //http://localhost:3002
 
 app.use("/api/auth", authRoute);
+app.use("/api/pallets", palletRoute);
 
 
 
