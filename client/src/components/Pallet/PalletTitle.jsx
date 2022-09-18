@@ -1,9 +1,9 @@
 import React from 'react';
 import { useState } from 'react';
 
-const PalletName = () => {
+const PalletName = ({ title, setTitle }) => {
 
-	const [title, setTitle] = useState("");
+
 	const [isEditingTitle, setIsEditingTitle] = useState(true);
 
 
@@ -18,21 +18,29 @@ const PalletName = () => {
 		<div className='my-3'>
 
 
-			{!isEditingTitle && <div className='flex flex-row justify-between w-1/2 mx-auto px-2'>
+			{!isEditingTitle && <div className='flex flex-row justify-between w-3/4 mx-auto px-2'>
+
 				<h2>{title !== "" ? title : "___________"}</h2>
-				{title !== "" ? <button onClick={handlerTitle} >Редактировать имя</button> : <button onClick={handlerTitle} >Ввести имя</button>}
+
+				{title !== ""
+					?
+					<button className='text-white bg-blue-400 rounded-md p-2 mx-2' onClick={handlerTitle} >Редактировать имя</button>
+					:
+					<button className='text-white  bg-blue-400 rounded-md p-2 mx-2' onClick={handlerTitle} >Ввести имя</button>}
 			</div>
 			}
 
-			{isEditingTitle && <div className='flex flex-row justify-between w-1/2 mx-auto px-2'>
+			{isEditingTitle && <div className='flex flex-row justify-between w-3/4 mx-auto px-2'>
+
 				<input
-					className='rounded-lg'
+					className='rounded-md pl-2 '
 					type="text"
 					value={title}
 					placeholder='Название...'
 					onChange={e => setTitle(e.target.value)} />
 
-				<button onClick={handlerTitle}>Сохранить</button>
+				<button className='text-white  bg-blue-400 rounded-md p-2 mx-2' onClick={handlerTitle}>Сохранить</button>
+
 			</div>
 			}
 

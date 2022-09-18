@@ -5,6 +5,7 @@ import User from "../models/User.js";
 
 
 
+
 //Create Pallet
 
 export const createPallet = async (req, res) => {
@@ -24,6 +25,24 @@ export const createPallet = async (req, res) => {
 
 	} catch (error) {
 		res.json({ message: "Что-то не так с паллетой" })
+	}
+}
+
+
+// Get All Pallets
+
+export const getAllPallets = async (req, res) => {
+	try {
+		const pallets = await Pallet.find().sort('-createdAt')
+
+
+		if (!pallets) {
+			return res.json({ message: 'Паллет нет' })
+		}
+
+		res.json({ pallets })
+	} catch (error) {
+		res.json({ message: 'Что-то не так с отображением паллет.' })
 	}
 }
 

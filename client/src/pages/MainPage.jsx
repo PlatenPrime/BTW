@@ -6,9 +6,9 @@ const MainPage = () => {
 
 
 
-	
+
 	return (
-		<div>
+		<div className='max-w-[900px] mx-auto py-10' >
 			Main Page
 		</div>
 	);

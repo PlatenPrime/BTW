@@ -13,7 +13,7 @@ const PalletInput = ({ addPosition, art, setArt, pieces, setPieces }) => {
 	return (
 
 
-		<>
+		<div className='flex '>
 
 			{add ?
 
@@ -58,11 +58,11 @@ const PalletInput = ({ addPosition, art, setArt, pieces, setPieces }) => {
 				</div>
 				:
 				<button
-					className='bg-yellow-400 text-white p-2 mx-auto rounded-full'
+					className='bg-yellow-400 text-white p-2 my-4  mx-auto rounded-lg'
 					onClick={toggleAdd}
 				>Добавить артикул</button>
 			}
-		</>
+		</div>
 	);
 };
 

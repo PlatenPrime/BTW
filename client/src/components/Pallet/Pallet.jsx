@@ -1,63 +1,31 @@
 import React, { useState } from 'react';
-import PalletInput from './PalletInput';
-import PalletTitle from './PalletTitle';
-import PalletPosition from './PalletPosition';
-
-const Pallet = () => {
-
-	const [positions, setPositions] = useState([]);
-
-	const [art, setArt] = useState("");
-	const [pieces, setPieces] = useState(0);
 
 
+const Pallet = ({ pallet }) => {
 
-	const addPosition = () => {
-
-		const position = {
-			id: positions.length === 0 ? 1 : positions[positions.length - 1].id + 1,
-			art: art,
-			pieces: pieces,
-		};
-
-
-		setPositions(art !== "" ? [...positions, position] : positions);
-		setArt("");
-		setPieces(0);
-
+	if (!pallet) {
+		return (
+			<div className='text-xl text-center text-white py-10'>
+				Загрузка...
+			</div>
+		)
 	}
 
-
-
-	const deletePosition = (id) => {
-		setPositions(positions.filter((position) => position.id !== id));
-
-	};
-
-
-
-
 	return (
-		<div className='flex flex-col justify-center mt-10' >
+		<div className='flex flex-col justify-center mt-10 border border-blue-400' >
 
-			<PalletTitle />
+			{pallet.title}
 
+			{pallet.positions.length > 0 &&
 
-			{positions.length > 0 &&
-
-				<div className='border'>
+				<div className='border rounded-md'>
 
 					{
-						positions.map((position) => {
+						pallet.positions.map((position) => {
 							return (
-								<PalletPosition
-									id={position.id}
-									key={position.id}
-									art={position.art}
-									pieces={position.pieces}
-									deletePosition={deletePosition}
-
-								/>
+								<div className='w-3/4 mx-auto flex flex-row justify-between text-white text-lg p-3'>
+									{position.art} : {position.pieces}
+								</div>
 							)
 						})
 					}
@@ -65,22 +33,8 @@ const Pallet = () => {
 
 				</div>
 
-
 			}
 
-
-			<PalletInput
-
-				art={art}
-				setArt={setArt}
-				pieces={pieces}
-				setPieces={setPieces}
-
-				addPosition={addPosition} />
-
-
-
-			<button className='bg-green-700 text-white p-3 mx-auto w-fit rounded-lg mt-4' >СОХРАНИТЬ</button>
 
 
 		</div>

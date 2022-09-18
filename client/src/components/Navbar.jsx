@@ -26,7 +26,7 @@ const Navbar = () => {
 
 
 	return (
-		<div className='flex py-4 justify-between items-center'>
+		<div className='flex py-4 px-1 justify-between items-center bg-gray-500 bg-opacity-50'>
 			<span className='flex justify-center items-center w-6 h-6 bg-gray-600 text-xs text-white rounded-sm'>
 				E
 			</span>
@@ -36,7 +36,7 @@ const Navbar = () => {
 				(<ul className='flex gap-8'>
 					<li><NavLink to={"/"} className='text-lg text-black hover:text-white' style={({ isActive }) => isActive ? activeStyles : undefined} >Главная</NavLink></li>
 					<li><NavLink to={"pallets"} className='text-lg text-black hover:text-white' style={({ isActive }) => isActive ? activeStyles : undefined}>Паллеты</NavLink></li>
-					<li><NavLink to={"new"} className='text-lg text-black hover:text-white' style={({ isActive }) => isActive ? activeStyles : undefined}>Создать паллет</NavLink></li>
+					<li><NavLink to={"new"} className='text-lg text-black hover:text-white' style={({ isActive }) => isActive ? activeStyles : undefined}>Создать паллету</NavLink></li>
 				</ul>)
 			}
 
