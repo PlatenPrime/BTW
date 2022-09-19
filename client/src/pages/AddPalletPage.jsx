@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
-
-
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { checkIsAuth } from '../redux/features/auth/authSlice';
+import { toast } from 'react-toastify';
 
 
 import PalletInput from '../components/Pallet/PalletInput';
@@ -23,6 +23,19 @@ const AddPalletPage = () => {
 	const dispatch = useDispatch()
 	const navigate = useNavigate()
 
+	const { status } = useSelector((state) => state.pallet)
+	const isAuth = useSelector(checkIsAuth)
+
+
+	useEffect(() => {
+		if (status) {
+			toast(status)
+		}
+		if (!isAuth) navigate('/login')
+	}, [status, isAuth, navigate])
+
+
+
 
 	const submitHandler = () => {
 		try {
@@ -30,7 +43,7 @@ const AddPalletPage = () => {
 				title, positions
 			}
 			dispatch(createPallet(data))
-			navigate('/')
+			navigate('/pallets')
 			console.log(data)
 		} catch (error) {
 			console.log(error)

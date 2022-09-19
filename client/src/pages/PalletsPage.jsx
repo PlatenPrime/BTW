@@ -32,7 +32,7 @@ const PalletsPage = () => {
 		<div lassName='max-w-[900px] mx-auto py-10'  >
 			<h2 className='text-xl my-6'>В базе данных на текущий момент есть такие паллеты:</h2>
 
-			<div>
+			<div className='w-1/2 mx-auto'>
 				{pallets?.map((pallet, idx) => (
 					<Pallet key={idx} pallet={pallet} />
 				))}

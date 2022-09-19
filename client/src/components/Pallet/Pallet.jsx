@@ -12,7 +12,7 @@ const Pallet = ({ pallet }) => {
 	}
 
 	return (
-		<div className='flex flex-col justify-center mt-10 border border-blue-400' >
+		<div className='flex flex-col justify-center mt-10 ' >
 
 			{pallet.title}
 
