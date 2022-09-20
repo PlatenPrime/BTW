@@ -83,26 +83,24 @@ const AddPalletPage = () => {
 
 
 
-
-
-
-
-
-
 	return (
-		<div >
+		<div className='border p-5'>
 
 			<h1 className='my-5'>Введи название паллеты  и позиции на ней </h1>
 
-			<div className='border border-black p-10 rounded-lg my-10' >
+			<div className='w-1/2 mx-auto border border-black p-10 rounded-lg my-10' >
 
 				<PalletTitle
 					title={title}
 					setTitle={setTitle} />
 
+				<hr />
+
 				<PalletPositions
 					positions={positions}
 					deletePosition={deletePosition} />
+
+
 
 				<PalletInput
 					addPosition={addPosition}
@@ -111,22 +109,28 @@ const AddPalletPage = () => {
 					pieces={pieces}
 					setPieces={setPieces}
 				/>
+				<hr />
+
+				<div className='flex my-3'>
+
+					<button
+						className='bg-green-500 p-3 rounded-lg mx-auto block text-white'
+						onClick={submitHandler}
+					>Сохранить паллету в базу данных</button>
+
+
+					<button
+						className='bg-red-300 p-3 rounded-lg mx-auto block text-white'
+						onClick={clearFormHandler}
+					>Очистить форму</button>
+
+				</div>
+
+
+
 			</div>
 
-			<div className='flex'>
 
-				<button
-					className='bg-green-500 p-5 rounded-lg mx-auto block text-white'
-					onClick={submitHandler}
-				>Сохранить паллету в базу данных</button>
-
-
-				<button
-					className='bg-red-300 p-5 rounded-lg mx-auto block text-white'
-					onClick={clearFormHandler}
-				>Очистить форму</button>
-
-			</div>
 
 		</div>
 

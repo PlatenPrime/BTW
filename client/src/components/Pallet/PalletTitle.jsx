@@ -15,25 +15,29 @@ const PalletName = ({ title, setTitle }) => {
 
 
 	return (
-		<div className='my-3'>
+		<div className='my-3 h-20'>
 
 
-			{!isEditingTitle && <div className='flex flex-row justify-between w-3/4 mx-auto px-2'>
+			{!isEditingTitle && <div className='flex flex-row justify-center w-1/2 mx-auto px-2'>
 
-				<h2>{title !== "" ? title : "___________"}</h2>
+				{title && <h2
+					onClick={handlerTitle}
+
+					className='align-left align-middle text-3xl' >{title !== "" ? title : ""}</h2>
+				}
 
 				{title !== ""
 					?
-					<button className='text-white bg-blue-400 rounded-md p-2 mx-2' onClick={handlerTitle} >Редактировать имя</button>
+					""
 					:
 					<button className='text-white  bg-blue-400 rounded-md p-2 mx-2' onClick={handlerTitle} >Ввести имя</button>}
 			</div>
 			}
 
-			{isEditingTitle && <div className='flex flex-row justify-between w-3/4 mx-auto px-2'>
+			{isEditingTitle && <div className='flex flex-row justify-between w-1/2 mx-auto px-2'>
 
 				<input
-					className='rounded-md pl-2 '
+					className='rounded-md pl-2 bg-white bg-opacity-40 outline-none'
 					type="text"
 					value={title}
 					placeholder='Название...'

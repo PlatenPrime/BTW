@@ -19,7 +19,7 @@ const PalletInput = ({ addPosition, art, setArt, pieces, setPieces }) => {
 
 
 
-				<div className='border mx-auto mt-3 py-1 flex flex-row px-2'>
+				<div className='border mx-auto my-3 py-3 flex flex-row px-2'>
 
 
 
@@ -29,7 +29,7 @@ const PalletInput = ({ addPosition, art, setArt, pieces, setPieces }) => {
 						value={art}
 						onChange={(e) => setArt(e.target.value)}
 						placeholder='Артикул...'
-						className='mt-1 mx-1 text-black w-full rounded-lg bg-white border py-1 px-2 text-xs outline-none placeholder:text-gray-700'
+						className='my-1 mx-1 text-black text-lg w-full rounded-lg bg-white bg-opacity-40 border py-3 px-2 text-xs outline-none placeholder:text-gray-700 placeholder:text-lg'
 					/>
 
 
@@ -39,19 +39,19 @@ const PalletInput = ({ addPosition, art, setArt, pieces, setPieces }) => {
 						value={pieces}
 						onChange={(e) => setPieces(e.target.value)}
 						placeholder='Количество...'
-						className='mt-1 mx-1 text-black w-full rounded-lg bg-white border py-1 px-2 text-xs outline-none placeholder:text-gray-700'
+						className='my-1 mx-1 text-black text-lg w-full rounded-lg bg-white bg-opacity-40 border py-3 px-2 text-xs outline-none placeholder:text-gray-700 placeholder:text-lg'
 					/>
 
 
 
 
 					<button
-						className='px-2 mx-1 bg-blue-400 text-white rounded-md'
+						className='px-2 my-1 mx-1 bg-blue-400 text-white rounded-md'
 						onClick={addPosition}
 					>Да</button>
 
 					<button
-						className='px-2 mx-1 bg-red-400 text-white rounded-md'
+						className='px-2 my-1 mx-1 bg-red-400 text-white rounded-md'
 						onClick={toggleAdd}
 					>Нет</button>
 
