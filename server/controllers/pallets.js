@@ -47,4 +47,18 @@ export const getAllPallets = async (req, res) => {
 }
 
 
+// Remove pallet
+export const removePallet = async (req, res) => {
+	try {
+		const pallet = await Pallet.findByIdAndDelete(req.params.id)
+		if (!pallet) return res.json({ message: 'Такого паллеты не существует' })
+
+
+
+		res.json({ message: 'Паллета была удалена.' })
+	} catch (error) {
+		res.json({ message: 'Что-то не так с удалением паллеты.' })
+	}
+}
+
 

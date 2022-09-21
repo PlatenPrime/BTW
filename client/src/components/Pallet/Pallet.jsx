@@ -14,7 +14,17 @@ const Pallet = ({ pallet }) => {
 	return (
 		<div className='flex flex-col justify-center mt-10 ' >
 
-			{pallet.title}
+			<div className='p-2 flex justify-between bg-blue-400 text-white'>
+
+				<span className='flex items-center text-lg'>Паллета {pallet.title}</span>
+
+				<span className='mx-4'>
+					<button className='my-1 mx-1 p-1 rounded-md bg-yellow-600'>Редактировать</button>
+					<button className='my-1 mx-1 p-1 rounded-md bg-red-600'>Удалить</button>
+				</span>
+
+
+			</div>
 
 			{pallet.positions.length > 0 &&
 
