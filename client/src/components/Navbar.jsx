@@ -27,8 +27,8 @@ const Navbar = () => {
 
 	return (
 		<div className='flex py-4 px-1 justify-between items-center bg-gray-500 bg-opacity-50'>
-			<span className='flex justify-center items-center w-6 h-6 bg-gray-600 text-xs text-white rounded-sm'>
-				E
+			<span className='flex justify-center items-center w-10 h-10 bg-gray-600 text-xs text-white rounded-sm'>
+				BTW
 			</span>
 
 
