@@ -12,7 +12,7 @@ const Pallet = ({ pallet }) => {
 	}
 
 	return (
-		<div className='flex flex-col justify-center mt-10 ' >
+		<div className='flex flex-col justify-center my-5 ' >
 
 			<div className='p-2 flex justify-between bg-blue-400 text-white'>
 
@@ -20,7 +20,7 @@ const Pallet = ({ pallet }) => {
 
 				<span className='mx-4'>
 					<button className='my-1 mx-1 p-1 rounded-md bg-yellow-600'>Редактировать</button>
-					<button className='my-1 mx-1 p-1 rounded-md bg-red-600'>Удалить</button>
+
 				</span>
 
 
