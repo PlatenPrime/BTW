@@ -81,8 +81,8 @@ export const removePallet = async (req, res) => {
 // Update pallet
 export const updatePallet = async (req, res) => {
 	try {
-		const { title, positions } = req.body
-		const pallet = await Pallet.findById(id)
+		const { title, positions, _id } = req.body
+		const pallet = await Pallet.findById(_id)
 
 
 		pallet.title = title;

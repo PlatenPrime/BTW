@@ -28,8 +28,20 @@ const PalletItem = ({ pallet, isEdit }) => {
 					{
 						pallet.positions.map((position) => {
 							return (
-								<div className='w-3/4 border mx-auto flex flex-row justify-between text-white text-xl p-3'>
+								<div
+									className='w-3/4 border mx-auto flex flex-row justify-between text-white text-xl p-3 '
+									key={position.id}
+									
+								>
 									{position.art} : {position.pieces}
+
+									{isEdit &&
+
+
+										<button
+											className='text-sm text-white bg-blue-600 rounded-md my-1 p-1'>
+											Изменить
+										</button>}
 
 								</div>
 							)

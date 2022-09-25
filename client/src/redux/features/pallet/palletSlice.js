@@ -49,9 +49,10 @@ export const updatePallet = createAsyncThunk(
 	async (updatedPallet) => {
 		try {
 			const { data } = await axios.put(
-				`/pallets/${updatedPallet.id}`,
+				`/pallets/${updatedPallet._id}`,
 				updatedPallet,
 			)
+			console.log(data)
 			return data
 		} catch (error) {
 			console.log(error)
@@ -112,22 +113,27 @@ export const palletSlice = createSlice({
 		},
 		[removePallet.rejected]: (state) => {
 			state.loading = false
+
 		},
 
 
 		// Обновление паллеты
 
-		[updatePallet.pending]: (state) => {
+		[updatePallet.pending]: (state,) => {
 			state.loading = true
 		},
 		[updatePallet.fulfilled]: (state, action) => {
 			state.loading = false
+			state.status = action.payload.message
+			console.log(state.pallets)
 			const index = state.pallets.findIndex(
 				(pallet) => pallet._id === action.payload._id,
 			)
+
 			state.pallets[index] = action.payload
 		},
-		[updatePallet.rejected]: (state) => {
+		[updatePallet.rejected]: (state, action) => {
+			state.status = action.payload.message
 			state.loading = false
 		},
 

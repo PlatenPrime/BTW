@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react';
 
+
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -11,7 +12,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 
-import { removePallet } from '../redux/features/pallet/palletSlice';
+import { removePallet, updatePallet } from '../redux/features/pallet/palletSlice';
 import PalletItem from '../components/Pallet/PalletItem';
 
 
@@ -26,22 +27,85 @@ import PalletItem from '../components/Pallet/PalletItem';
 
 const PalletPage = () => {
 
+
+
 	const [pallet, setPallet] = useState("")
 	const [isEdit, setIsEdit] = useState(false)
 
+	const [title, setTitle] = useState("")
+	const [positions, setPositions] = useState("")
+
+	const [inputTitle, setInputTitle] = useState(false)
+	const [inputPosition, setInputPosition] = useState(false)
+	const [art, setArt] = useState("");
+	const [pieces, setPieces] = useState("");
+
+
+
+
+
+
+
+
+	const { status } = useSelector((state) => state.pallet)
 	const navigate = useNavigate()
 	const params = useParams()
 	const dispatch = useDispatch()
 
 
+
+
+
 	const fetchPallet = useCallback(async () => {
 		const { data } = await axios.get(`/pallets/${params.id}`)
 		setPallet(data)
+		setTitle(data.title)
+		setPositions(data.positions)
+
 	}, [params.id])
 
 	useEffect(() => {
 		fetchPallet()
 	}, [fetchPallet])
+
+	// Pallet CRUD
+
+	const addPosition = () => {
+
+		const position = {
+			id: positions.length === 0 ? 1 : positions[positions.length - 1].id + 1,
+			art: art,
+			pieces: pieces,
+		};
+
+
+		setPositions(art !== "" ? [...positions, position] : positions);
+		setArt("");
+		setPieces("");
+
+	}
+
+
+
+	const deletePosition = (id) => {
+		setPositions(positions.filter((position) => position.id !== id));
+
+	};
+
+
+	const updatePosition = (id) => {
+		positions.map((position) => {
+			if (position.id === id) {
+				return { ...position, art, pieces }
+			} else {
+				return position;
+			}
+		})
+
+	}
+
+
+	// Pallet REST
 
 	const removeAttempt = () => {
 		window.confirm("Удалить эту паллету?") && dispatch(removePallet(params.id))
@@ -64,10 +128,29 @@ const PalletPage = () => {
 	}
 
 	const handlerSave = () => {
+		submitSave();
 		setIsEdit(false);
+
 	}
 
+	const submitSave = () => {
+		try {
+			const updatedPallet = {
+				...pallet,
+				title,
+				positions
+			}
 
+			console.log(updatedPallet);
+			dispatch(updatePallet(updatedPallet))
+			if (status) {
+				toast(status)
+			}
+
+		} catch (error) {
+			console.log(error)
+		}
+	}
 
 
 
@@ -77,9 +160,51 @@ const PalletPage = () => {
 		<div className='mx-auto w-3/4  shadow-lg shadow-slate-400 rounded-b-md'>
 
 
-			<div className='text-3xl bg-teal-500 w-full my-4 flex justify-center' >{pallet.title}</div>
+
+			<div
+				className='text-3xl bg-teal-500 w-full my-4 flex justify-center' >
+
+				{inputTitle ?
+
+
+					<div>
+
+						<input
+							type="text"
+							placeholder='Введи имя...'
+							value={title}
+							onChange={(e) => setTitle(e.target.value)}
+						/>
+
+
+						{isEdit &&
+							<button
+								className='text-sm text-white bg-blue-600 rounded-md my-1 p-1'
+								onClick={() => setInputTitle(false)}
+							>
+								Сохранить
+							</button>}
+					</div>
+					:
+					<div>
+						{title}
+						{isEdit &&
+							<button
+								className='text-sm text-white bg-blue-600 rounded-md my-1 p-1'
+								onClick={() => setInputTitle(true)}
+							>
+								Изменить
+							</button>}
+					</div>
+				}
+
+
+			</div>
+
+
 
 			<PalletItem pallet={pallet} isEdit={isEdit} />
+
 
 			<div className='flex justify-center  w-full  my-3'>
 
@@ -88,7 +213,7 @@ const PalletPage = () => {
 				{isEdit ?
 
 					<button
-						className='text-xl text-white p-2 rounded-lg  m-3   bg-blue-600'
+						className='text-xl text-white p-2 rounded-lg  m-3   bg-green-600'
 						onClick={handlerSave}
 
 					>Сохранить</button>
