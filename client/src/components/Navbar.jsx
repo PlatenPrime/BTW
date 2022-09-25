@@ -26,19 +26,12 @@ const Navbar = () => {
 
 
 	return (
-		<div className='flex py-4 px-1 justify-between items-center bg-gray-500 bg-opacity-50'>
+		<div className='flex py-4 px-1 justify-between items-center bg-gray-500 bg-opacity-50 w-full'>
 			<span className='flex justify-center items-center w-10 h-10 bg-gray-600 text-xs text-white rounded-sm'>
 				BTW
 			</span>
 
 
-			{isAuth &&
-				(<ul className='flex gap-8'>
-					<li><NavLink to={"/"} className='text-lg text-black hover:text-white' style={({ isActive }) => isActive ? activeStyles : undefined} >Главная</NavLink></li>
-					<li><NavLink to={"pallets"} className='text-lg text-black hover:text-white' style={({ isActive }) => isActive ? activeStyles : undefined}>Паллеты</NavLink></li>
-					<li><NavLink to={"new"} className='text-lg text-black hover:text-white' style={({ isActive }) => isActive ? activeStyles : undefined}>Создать паллету</NavLink></li>
-				</ul>)
-			}
 
 
 

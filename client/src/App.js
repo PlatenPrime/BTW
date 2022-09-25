@@ -11,7 +11,6 @@ import PalletPage from "./pages/PalletPage";
 import AddPalletPage from "./pages/AddPalletPage";
 import { LoginPage } from "./pages/LoginPage";
 import { RegisterPage } from "./pages/RegisterPage";
-import EditPalletPage from "./pages/EditPalletPage";
 import { useDispatch } from "react-redux";
 import { getMe } from "./redux/features/auth/authSlice";
 import { useEffect } from "react";
@@ -42,9 +41,9 @@ function App() {
 				<Route path="register" element={<RegisterPage />} />
 
 				<Route path="pallets" element={<PalletsPage />} />
-				<Route path=":id" element={<PalletPage />} />
-				<Route path=":id/edit" element={<EditPalletPage />} />
-				<Route path="new" element={<AddPalletPage />} />
+				<Route path="pallets/:id" element={<PalletPage />} />
+				
+				<Route path="pallets/new" element={<AddPalletPage />} />
 
 			</Routes>
 

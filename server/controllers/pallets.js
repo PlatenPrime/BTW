@@ -47,11 +47,27 @@ export const getAllPallets = async (req, res) => {
 }
 
 
+// Get Pallet By Id
+export const getById = async (req, res) => {
+	try {
+		const pallet = await Pallet.findByIdAndUpdate(req.params.id)
+		res.json(pallet)
+	} catch (error) {
+		res.json({ message: 'Паллета не найдена' })
+	}
+}
+
+
+
+
+
+
+
 // Remove pallet
 export const removePallet = async (req, res) => {
 	try {
 		const pallet = await Pallet.findByIdAndDelete(req.params.id)
-		if (!pallet) return res.json({ message: 'Такого паллеты не существует' })
+		if (!pallet) return res.json({ message: 'Такой паллеты не существует' })
 
 
 
@@ -62,3 +78,20 @@ export const removePallet = async (req, res) => {
 }
 
 
+// Update pallet
+export const updatePallet = async (req, res) => {
+	try {
+		const { title, positions } = req.body
+		const pallet = await Pallet.findById(id)
+
+
+		pallet.title = title;
+		pallet.positions = positions;
+
+		await pallet.save()
+
+		res.json(pallet)
+	} catch (error) {
+		res.json({ message: 'Что-то не так c редактированием паллеты' })
+	}
+}

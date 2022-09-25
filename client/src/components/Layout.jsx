@@ -5,10 +5,20 @@ import Sidebar from './Sidebar';
 const Layout = ({ children }) => {
 	return (
 		<>
-			<div className='container mx-auto'>
-				<Navbar />
+			<div className='container mx-auto flex'>
 
-				{children}
+				<div>
+					<Sidebar />
+				</div>
+
+
+				<div className='w-full'>
+
+					<Navbar />
+
+					{children}
+
+				</div>
 
 			</div>
 

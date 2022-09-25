@@ -16,12 +16,12 @@ const Sidebar = () => {
 
 
 	return (
-		<div>
+		<div className='flex w-full  bg-gray-500 bg-opacity-50  h-full min-h-screen p-4 '>
 			{isAuth &&
-				(<ul className='flex gap-8'>
+				(<ul className='flex gap-8 flex-col'>
 					<li><NavLink to={"/"} className='text-lg text-black hover:text-white' style={({ isActive }) => isActive ? activeStyles : undefined} >Главная</NavLink></li>
 					<li><NavLink to={"pallets"} className='text-lg text-black hover:text-white' style={({ isActive }) => isActive ? activeStyles : undefined}>Паллеты</NavLink></li>
-					<li><NavLink to={"new"} className='text-lg text-black hover:text-white' style={({ isActive }) => isActive ? activeStyles : undefined}>Создать паллету</NavLink></li>
+
 				</ul>)
 			}
 		</div>
