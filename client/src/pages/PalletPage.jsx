@@ -68,41 +68,6 @@ const PalletPage = () => {
 		fetchPallet()
 	}, [fetchPallet])
 
-	// Pallet CRUD
-
-	const addPosition = () => {
-
-		const position = {
-			id: positions.length === 0 ? 1 : positions[positions.length - 1].id + 1,
-			art: art,
-			pieces: pieces,
-		};
-
-
-		setPositions(art !== "" ? [...positions, position] : positions);
-		setArt("");
-		setPieces("");
-
-	}
-
-
-
-	const deletePosition = (id) => {
-		setPositions(positions.filter((position) => position.id !== id));
-
-	};
-
-
-	const updatePosition = (id) => {
-		positions.map((position) => {
-			if (position.id === id) {
-				return { ...position, art, pieces }
-			} else {
-				return position;
-			}
-		})
-
-	}
 
 
 	// Pallet REST
@@ -203,7 +168,18 @@ const PalletPage = () => {
 
 
 
-			<PalletItem pallet={pallet} isEdit={isEdit} />
+			<PalletItem
+				pallet={pallet}
+				isEdit={isEdit}
+				inputPosition={inputPosition}
+				setInputPosition={setInputPosition}
+				art={art}
+				setArt={setArt}
+				pieces={pieces}
+				setPieces={setPieces}
+
+
+			/>
 
 
 			<div className='flex justify-center  w-full  my-3'>
