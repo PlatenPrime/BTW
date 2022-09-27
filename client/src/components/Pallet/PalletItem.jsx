@@ -1,4 +1,9 @@
 import React, { useState } from 'react';
+import PalletTitle from './PalletTitle';
+
+
+
+
 
 const PalletItem = ({
 
@@ -63,8 +68,14 @@ const PalletItem = ({
 	return (
 		<div>
 
-<h1>Title</h1>
-<h2>Positions</h2>
+			<PalletTitle
+				title={title}
+				setTitle={setTitle}
+
+			/>
+
+
+			<h2>Positions</h2>
 
 
 

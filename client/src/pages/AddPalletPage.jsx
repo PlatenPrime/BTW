@@ -7,7 +7,7 @@ import { toast } from 'react-toastify';
 
 import PalletInput from '../components/PalletComponents/PalletInput';
 import PalletPositions from '../components/PalletComponents/PalletPositions';
-import PalletTitle from '../components/PalletComponents/PalletTitle';
+import PalletTitle from '../components/Pallet/PalletTitle';
 
 import { createPallet } from '../redux/features/pallet/palletSlice';
 
