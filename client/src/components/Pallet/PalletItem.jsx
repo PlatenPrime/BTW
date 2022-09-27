@@ -1,27 +1,21 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom'
 
+const PalletItem = ({
 
-const PalletItem = ({ pallet, isEdit,
-	inputPosition, setInputPosition,
-	positions, setPositions,
-	art, setArt,
-	pieces, setPieces
-
-
+	isPalletEditing,
+	title,
+	setTitle,
+	positions,
+	setPositions
 
 }) => {
 
 
+	const [art, setArt] = useState("");
+	const [pieces, setPieces] = useState("");
 
 
-	if (!pallet) {
-		return (
-			<div className='text-xl text-center text-white py-10'>
-				Загрузка...
-			</div>
-		)
-	}
+
 
 
 	const addPosition = () => {
@@ -61,69 +55,23 @@ const PalletItem = ({ pallet, isEdit,
 
 
 
+
+
+
+
+
 	return (
-		<div >
+		<div>
+
+<h1>Title</h1>
+<h2>Positions</h2>
 
 
 
-			{pallet.positions.length &&
-
-				<div className='flex flex-col justify-center m-5 bg rounded-3xl' >
-
-
-					{
-						pallet.positions.map((position) => {
-							return (
-								<div>
-
-
-									{inputPosition ?
-										<div className='flex justify-between text-white'>
-											Input div
-
-											<button
-												onClick={() => { setInputPosition(false) }}
-											>
-												Сохранить
-											</button>
-										</div>
-
-										:
-
-
-										<div
-											className='w-3/4 border mx-auto flex flex-row justify-between text-white text-xl p-3 '
-											key={position.id}
-										>
-
-											{position.art} : {position.pieces}
-
-											{isEdit &&
-
-												<button
-													className='text-sm text-white bg-blue-600 rounded-md my-1 p-1'
-													onClick={() => { setInputPosition(true) }}
-												>
-													Изменить
-												</button>}
-
-										</div>
-
-									}
-								</div>
-
-							)
-						})
-					}
-
-
-				</div>
-
-			}
 
 
 
-		</div >
+		</div>
 	);
 };
 

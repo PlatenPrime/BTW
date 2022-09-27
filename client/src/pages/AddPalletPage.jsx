@@ -5,9 +5,9 @@ import { checkIsAuth } from '../redux/features/auth/authSlice';
 import { toast } from 'react-toastify';
 
 
-import PalletInput from '../components/Pallet/PalletInput';
-import PalletPositions from '../components/Pallet/PalletPositions';
-import PalletTitle from '../components/Pallet/PalletTitle';
+import PalletInput from '../components/PalletComponents/PalletInput';
+import PalletPositions from '../components/PalletComponents/PalletPositions';
+import PalletTitle from '../components/PalletComponents/PalletTitle';
 
 import { createPallet } from '../redux/features/pallet/palletSlice';
 

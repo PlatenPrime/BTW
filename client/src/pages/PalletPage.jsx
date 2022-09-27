@@ -13,7 +13,7 @@ import { toast } from 'react-toastify';
 
 
 import { removePallet, updatePallet } from '../redux/features/pallet/palletSlice';
-import PalletItem from '../components/Pallet/PalletItem';
+import PalletItem from '../components/PalletComponents/PalletItem';
 
 
 

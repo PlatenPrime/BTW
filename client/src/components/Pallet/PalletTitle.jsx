@@ -1,55 +1,47 @@
 import React from 'react';
-import { useState } from 'react';
 
-const PalletName = ({ title, setTitle }) => {
+const PalletTitle = ({ title, setTitle }) => {
+
+	const [isEditingTitle, setIsEditingTitle] = useState(false);
+	const [newTitle, setNewTitle] = useState(title)
 
 
-	const [isEditingTitle, setIsEditingTitle] = useState(true);
-
-
-	const handlerTitle = () => {
-		setIsEditingTitle(!isEditingTitle);
+	const handlerEdit = () => {
+		setIsEditingTitle(true);
 	}
 
 
+	const handlerSave = () => {
+		setIsEditingTitle(false);
+		setTitle(newTitle)
+	}
 
 
 	return (
-		<div className='my-3 h-20'>
+		<div>
 
+			{isEditingTitle ?
 
-			{!isEditingTitle && <div className='flex flex-row justify-center w-1/2 mx-auto px-2'>
+				<div>
+					<h2>Input</h2>
+					<button>Save</button>
+				</div>
 
-				{title && <h2
-					onClick={handlerTitle}
+				:
 
-					className='align-left align-middle text-3xl' >{title !== "" ? title : ""}</h2>
-				}
+				<div>
+					<h2>Label</h2>
+					<button>Edit</button>
+				</div>
 
-				{title !== ""
-					?
-					""
-					:
-					<button className='text-white  bg-blue-400 rounded-md p-2 mx-2' onClick={handlerTitle} >Ввести имя</button>}
-			</div>
 			}
 
-			{isEditingTitle && <div className='flex flex-row justify-between w-1/2 mx-auto px-2'>
 
-				<input
-					className='rounded-md pl-2 bg-white bg-opacity-40 outline-none'
-					type="text"
-					value={title}
-					placeholder='Название...'
-					onChange={e => setTitle(e.target.value)} />
 
-				<button className='text-white  bg-blue-400 rounded-md p-2 mx-2' onClick={handlerTitle}>Сохранить</button>
 
-			</div>
-			}
 
 		</div>
 	);
 };
 
-export default PalletName;
+export default PalletTitle;
