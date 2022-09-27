@@ -5,6 +5,7 @@ import cors from "cors";
 
 import authRoute from "./routes/auth.js";
 import palletRoute from "./routes/pallets.js";
+import rowRoute from "./routes/rows.js"
 
 
 const app = express();
@@ -29,6 +30,7 @@ app.use(express.json());
 
 app.use("/api/auth", authRoute);
 app.use("/api/pallets", palletRoute);
+app.use("/api/rows", rowRoute);
 
 
 
