@@ -1,19 +1,17 @@
 import React, { useCallback } from 'react';
-
-
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
-import axios from '../utils/axios';
-
 import { Link, useNavigate, useParams } from 'react-router-dom';
 
+import axios from '../utils/axios';
 import { toast } from 'react-toastify';
 
 
+
 import { removePallet, updatePallet } from '../redux/features/pallet/palletSlice';
-import PalletItem from '../components/PalletComponents/PalletItem';
+import PalletItem from '../components/Pallet/PalletItem';
+
 
 
 
@@ -30,7 +28,7 @@ const PalletPage = () => {
 
 
 	const [pallet, setPallet] = useState("")
-	const [isEdit, setIsEdit] = useState(false)
+	const [isPalletEditing, setIsPalletEditing] = useState(false)
 
 	const [title, setTitle] = useState("")
 	const [positions, setPositions] = useState("")
@@ -59,8 +57,7 @@ const PalletPage = () => {
 	const fetchPallet = useCallback(async () => {
 		const { data } = await axios.get(`/pallets/${params.id}`)
 		setPallet(data)
-		setTitle(data.title)
-		setPositions(data.positions)
+
 
 	}, [params.id])
 
@@ -79,7 +76,7 @@ const PalletPage = () => {
 	}
 
 
-	const removePalletHandler = () => {
+	const handlerPalletRemove = () => {
 		try {
 			removeAttempt()
 
@@ -88,17 +85,22 @@ const PalletPage = () => {
 		}
 	}
 
-	const handlerEdit = () => {
-		setIsEdit(true);
+	const handlerPalletEdit = () => {
+		setIsPalletEditing(true);
 	}
 
-	const handlerSave = () => {
-		submitSave();
-		setIsEdit(false);
+	const handlerCancelPalletEditing = () => {
+		setIsPalletEditing(false);
+	}
+
+
+	const handlerPalletSave = () => {
+		submitPalletSave();
+		setIsPalletEditing(false);
 
 	}
 
-	const submitSave = () => {
+	const submitPalletSave = () => {
 		try {
 			const updatedPallet = {
 				...pallet,
@@ -126,91 +128,70 @@ const PalletPage = () => {
 
 
 
-			<div
-				className='text-3xl bg-teal-500 w-full my-4 flex justify-center' >
-
-				{inputTitle ?
-
-
-					<div>
-
-						<input
-							type="text"
-							placeholder='Введи имя...'
-							value={title}
-							onChange={(e) => setTitle(e.target.value)}
-						/>
-
-
-						{isEdit &&
-							<button
-								className='text-sm text-white bg-blue-600 rounded-md my-1 p-1'
-								onClick={() => setInputTitle(false)}
-							>
-								Сохранить
-							</button>}
-					</div>
-					:
-					<div>
-						{title}
-						{isEdit &&
-							<button
-								className='text-sm text-white bg-blue-600 rounded-md my-1 p-1'
-								onClick={() => setInputTitle(true)}
-							>
-								Изменить
-							</button>}
-					</div>
-				}
-
-
-			</div>
-
-
-
 			<PalletItem
-				pallet={pallet}
-				isEdit={isEdit}
-				inputPosition={inputPosition}
-				setInputPosition={setInputPosition}
-				art={art}
-				setArt={setArt}
-				pieces={pieces}
-				setPieces={setPieces}
+				isPalletEditing={isPalletEditing}
+				title={title}
+				setTitle={setTitle}
+				positions={positions}
+				setPositions={setPositions}
 
 
 			/>
+
+
+
+
+
 
 
 			<div className='flex justify-center  w-full  my-3'>
 
 
 
-				{isEdit ?
+				{isPalletEditing ?
 
-					<button
-						className='text-xl text-white p-2 rounded-lg  m-3   bg-green-600'
-						onClick={handlerSave}
+					<div>
+						<button
+							className='text-xl text-white p-2 rounded-lg  m-3   bg-green-600'
+							onClick={handlerPalletSave}
+						>Сохранить</button>
 
-					>Сохранить</button>
+
+
+
+						<button
+							className='text-xl text-red-600 p-2 rounded-lg  m-3   bg-white'
+							onClick={handlerCancelPalletEditing}
+
+						>Отмена</button>
+
+
+
+						<button
+							className='text-xl text-white p-2 rounded-lg  m-3   bg-red-600'
+							onClick={handlerPalletRemove}
+						>Удалить</button>
+
+
+
+					</div>
+
+
+
+
+
+
 					:
 
 					<button
 						className='text-xl text-white p-2 rounded-lg  m-3   bg-blue-600'
-						onClick={handlerEdit}
+						onClick={handlerPalletEdit}
 
 					>Редактировать</button>}
 
 
 
-				<button className='text-xl text-black p-2 rounded-lg  m-3   bg-white' >Очистить</button>
 
-
-
-				<button
-					className='text-xl text-white p-2 rounded-lg  m-3   bg-red-600'
-					onClick={removePalletHandler}
-				>Удалить</button>
 			</div>
 
 

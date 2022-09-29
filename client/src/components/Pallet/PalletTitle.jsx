@@ -16,9 +16,10 @@ const PalletTitle = ({ title, setTitle }) => {
 		setTitle(newTitle)
 	}
 
+	console.log(newTitle);
 
 	return (
-		<div>
+		<div className='text-3xl bg-teal-500 w-full my-4 flex justify-center'>
 
 			{isEditingTitle ?
 
