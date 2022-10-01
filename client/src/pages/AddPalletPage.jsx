@@ -111,6 +111,9 @@ const AddPalletPage = () => {
 				/>
 				<hr />
 
+
+				
+
 				<div className='flex my-3'>
 
 					<button

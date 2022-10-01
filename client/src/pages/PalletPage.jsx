@@ -25,7 +25,7 @@ import PalletItem from '../components/Pallet/PalletItem';
 
 const PalletPage = () => {
 
-
+	// States
 
 	const [pallet, setPallet] = useState("")
 	const [isPalletEditing, setIsPalletEditing] = useState(false)
@@ -41,8 +41,7 @@ const PalletPage = () => {
 
 
 
-
-
+	// Hooking
 
 
 	const { status } = useSelector((state) => state.pallet)
@@ -52,12 +51,11 @@ const PalletPage = () => {
 
 
 
-
-
 	const fetchPallet = useCallback(async () => {
 		const { data } = await axios.get(`/pallets/${params.id}`)
 		setPallet(data)
-
+		setTitle(data.title)
+		setPositions(data.positions)
 
 	}, [params.id])
 
@@ -67,7 +65,7 @@ const PalletPage = () => {
 
 
 
-	// Pallet REST
+	// Pallet Handlers
 
 	const removeAttempt = () => {
 		window.confirm("Удалить эту паллету?") && dispatch(removePallet(params.id))
@@ -120,7 +118,7 @@ const PalletPage = () => {
 	}
 
 
-
+	// Render
 
 
 	return (

@@ -1,43 +1,50 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
-const PalletTitle = ({ title, setTitle }) => {
+const PalletTitle = ({ title, setTitle, isPalletEditing }) => {
 
 	const [isEditingTitle, setIsEditingTitle] = useState(false);
-	const [newTitle, setNewTitle] = useState(title)
+	const [newTitle, setNewTitle] = useState("")
 
 
-	const handlerEdit = () => {
+
+	useEffect(() => {
+		setNewTitle(title)
+	}, [title])
+
+
+
+	const handlerEditTitle = () => {
 		setIsEditingTitle(true);
 	}
 
 
-	const handlerSave = () => {
+	const handlerSaveTitle = () => {
 		setIsEditingTitle(false);
 		setTitle(newTitle)
 	}
 
-	console.log(newTitle);
+
 
 	return (
-		<div className='text-3xl bg-teal-500 w-full my-4 flex justify-center'>
+		<div className='text-3xl bg-teal-500 w-full my-4 flex '>
 
 			{isEditingTitle ?
 
-				<div>
+				<div className='flex my-1 justify-between w-full pl-1'>
 
 					<input
-						className='rounded-md pl-2 bg-gray-600 bg-opacity-40 outline-none'
+						className='text-white rounded-md pl-2 bg-slate-600 bg-opacity-80 outline-none w-4/5 my-1'
 						type="text"
 						value={newTitle}
 						placeholder='Название...'
 						onChange={e => setNewTitle(e.target.value)} />
 
 
-					<button
-						className='text-white  bg-blue-400 rounded-md p-2 mx-2'
-						onClick={handlerSave}
+					{isPalletEditing && <button
+						className='text-white  bg-blue-400 rounded-md p-1 mx-2 w-1/5'
+						onClick={handlerSaveTitle}
 
-					>Save</button>
+					>Save</button>}
 
 				</div>
 
@@ -45,33 +52,31 @@ const PalletTitle = ({ title, setTitle }) => {
 				:
 
 
-				<div>
+				<div className='flex my-1 w-full justify-between pl-1'>
 
 
-					<h2>{newTitle}</h2>
+					<h2
+						className='flex items-center pl-2 w-4/5 my-1 '
+					>{newTitle}</h2>
 
 
 					{title ?
 
-						<button
-							className='text-white  bg-blue-400 rounded-md p-2 mx-2'
-							onClick={handlerEdit}
+						isPalletEditing && <button
+							className='text-white  bg-blue-400 rounded-md p-1 mx-2 w-1/5'
+							onClick={handlerEditTitle}
 
 						>Edit</button>
 
 						:
 
-						<button
-							className='text-white  bg-blue-400 rounded-md p-2 mx-2'
-							onClick={handlerEdit}
+						isPalletEditing && <button
+							className='text-white  bg-blue-400 rounded-md p-1 mx-2 w-1/5'
+							onClick={handlerEditTitle}
 
 						>Add</button>
 
 					}
-
-
-
-
 
 
 				</div>
