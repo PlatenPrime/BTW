@@ -120,6 +120,11 @@ const PalletPosition = ({ positions, setPositions, isPalletEditing, art, pieces,
 
 						<div>
 
+							<button
+								className='   bg-red-600 text-white p-1 rounded-lg mx-2 '
+								onClick={() => handlerPositionDelete(id)}
+							>Delete
+							</button>
 
 
 
@@ -128,11 +133,6 @@ const PalletPosition = ({ positions, setPositions, isPalletEditing, art, pieces,
 								onClick={() => handlerPositionSave(id)}
 							>Save</button>
 
-							<button
-								className='   bg-red-600 text-white p-1 rounded-lg mx-2 '
-								onClick={() => handlerPositionDelete(id)}
-							>Delete
-							</button>
 
 						</div>
 

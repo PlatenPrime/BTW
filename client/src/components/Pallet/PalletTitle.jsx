@@ -52,12 +52,12 @@ const PalletTitle = ({ title, setTitle, isPalletEditing }) => {
 				:
 
 
-				<div className='flex my-1 w-full justify-between pl-1'>
+				<div className='flex my-1 w-full justify-center pl-1'>
 
 
-					<h2
+					{title && <h2
 						className='flex items-center pl-2 w-4/5 my-1 '
-					>{newTitle}</h2>
+					>{newTitle}</h2>}
 
 
 					{title ?
@@ -71,7 +71,7 @@ const PalletTitle = ({ title, setTitle, isPalletEditing }) => {
 						:
 
 						isPalletEditing && <button
-							className='text-white  bg-blue-400 rounded-md p-1 mx-2 w-1/5'
+							className='text-white flex justify-center  bg-blue-400 rounded-md p-1 mx-2 w-1/5'
 							onClick={handlerEditTitle}
 
 						>Add</button>

@@ -2,14 +2,15 @@ import React, { useCallback } from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+
+import { useNavigate, useParams } from 'react-router-dom';
 
 import axios from '../utils/axios';
 import { toast } from 'react-toastify';
 
-
-
 import { removePallet, updatePallet } from '../redux/features/pallet/palletSlice';
+import { checkIsAuth } from '../redux/features/auth/authSlice';
+
 import PalletItem from '../components/Pallet/PalletItem';
 
 
@@ -33,10 +34,6 @@ const PalletPage = () => {
 	const [title, setTitle] = useState("")
 	const [positions, setPositions] = useState("")
 
-	const [inputTitle, setInputTitle] = useState(false)
-	const [inputPosition, setInputPosition] = useState(false)
-	const [art, setArt] = useState("");
-	const [pieces, setPieces] = useState("");
 
 
 
@@ -48,6 +45,15 @@ const PalletPage = () => {
 	const navigate = useNavigate()
 	const params = useParams()
 	const dispatch = useDispatch()
+	const isAuth = useSelector(checkIsAuth)
+
+
+	useEffect(() => {
+		if (status) {
+			toast(status)
+		}
+		if (!isAuth) navigate('/login')
+	}, [status, isAuth, navigate])
 
 
 

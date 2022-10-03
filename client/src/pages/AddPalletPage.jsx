@@ -1,28 +1,29 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { checkIsAuth } from '../redux/features/auth/authSlice';
+
 import { toast } from 'react-toastify';
 
-
-import PalletInput from '../components/PalletComponents/PalletInput';
-import PalletPositions from '../components/PalletComponents/PalletPositions';
-import PalletTitle from '../components/Pallet/PalletTitle';
-
 import { createPallet } from '../redux/features/pallet/palletSlice';
+import { checkIsAuth } from '../redux/features/auth/authSlice';
+
+import PalletItem from '../components/Pallet/PalletItem';
 
 
 
 const AddPalletPage = () => {
 
+	const [isPalletEditing, setIsPalletEditing] = useState(true)
+
 	const [title, setTitle] = useState('');
 	const [positions, setPositions] = useState([]);
-	const [art, setArt] = useState("");
-	const [pieces, setPieces] = useState("");
+	;
+
+
+	// Hooking
 
 	const dispatch = useDispatch()
 	const navigate = useNavigate()
-
 	const { status } = useSelector((state) => state.pallet)
 	const isAuth = useSelector(checkIsAuth)
 
@@ -37,7 +38,10 @@ const AddPalletPage = () => {
 
 
 
-	const submitHandler = () => {
+	// Handlers
+
+
+	const handlerSubmit = () => {
 		try {
 			const data = {
 				title, positions
@@ -50,37 +54,16 @@ const AddPalletPage = () => {
 		}
 	}
 
-	const clearFormHandler = () => {
+	const handlerClearForm = () => {
 		setPositions([])
 		setTitle('')
 	}
 
 
 
-	const addPosition = () => {
-
-		const position = {
-			id: positions.length === 0 ? 1 : positions[positions.length - 1].id + 1,
-			art: art,
-			pieces: pieces,
-		};
 
 
-		setPositions(art !== "" ? [...positions, position] : positions);
-		setArt("");
-		setPieces("");
-
-	}
-
-
-
-	const deletePosition = (id) => {
-		setPositions(positions.filter((position) => position.id !== id));
-
-	};
-
-
-
+	// Render
 
 
 	return (
@@ -88,43 +71,32 @@ const AddPalletPage = () => {
 
 			<h1 className='my-5'>Введи название паллеты  и позиции на ней </h1>
 
-			<div className='w-1/2 mx-auto border border-black p-10 rounded-lg my-10' >
+			<div className='mx-auto w-3/4  shadow-lg shadow-slate-400 rounded-b-md' >
 
-				<PalletTitle
+
+
+				<PalletItem
+					isPalletEditing={isPalletEditing}
 					title={title}
-					setTitle={setTitle} />
-
-				<hr />
-
-				<PalletPositions
+					setTitle={setTitle}
 					positions={positions}
-					deletePosition={deletePosition} />
+					setPositions={setPositions}
 
 
-
-				<PalletInput
-					addPosition={addPosition}
-					art={art}
-					setArt={setArt}
-					pieces={pieces}
-					setPieces={setPieces}
 				/>
-				<hr />
 
-
-				
 
 				<div className='flex my-3'>
 
 					<button
 						className='bg-green-500 p-3 rounded-lg mx-auto block text-white'
-						onClick={submitHandler}
+						onClick={handlerSubmit}
 					>Сохранить паллету в базу данных</button>
 
 
 					<button
 						className='bg-red-300 p-3 rounded-lg mx-auto block text-white'
-						onClick={clearFormHandler}
+						onClick={handlerClearForm}
 					>Очистить форму</button>
 
 				</div>
