@@ -1,6 +1,6 @@
 
 
-import Pallet from "../models/Row.js";
+import Row from "../models/Row.js";
 
 
 
@@ -29,4 +29,66 @@ export const createRow = async (req, res) => {
 }
 
 
+// Get All Rows
 
+export const getAllRows = async (req, res) => {
+	try {
+		const rows = await Row.find().sort('-createdAt')
+
+
+		if (!rows) {
+			return res.json({ message: 'Рядов нет' })
+		}
+
+		res.json({ rows })
+	} catch (error) {
+		res.json({ message: 'Что-то не так с отображением рядов.' })
+	}
+}
+
+
+// Get Row By Id
+export const getById = async (req, res) => {
+	try {
+		const row = await Row.findByIdAndUpdate(req.params.id)
+		res.json(row)
+	} catch (error) {
+		res.json({ message: 'Ряд не найден' })
+	}
+}
+
+
+// Remove row
+
+export const removeRow = async (req, res) => {
+	try {
+		const row = await Row.findByIdAndDelete(req.params.id)
+		if (!row) return res.json({ message: 'Такого ряда не существует' })
+
+
+
+		res.json({ message: 'Ряд был удален.' })
+	} catch (error) {
+		res.json({ message: 'Что-то не так с удалением ряда.' })
+	}
+}
+
+
+// Update row
+
+export const updateRow = async (req, res) => {
+	try {
+		const { title, pallets, _id } = req.body
+		const row = await Row.findById(_id)
+
+
+		row.title = title;
+		row.pallets = pallets;
+
+		await row.save()
+
+		res.json(row)
+	} catch (error) {
+		res.json({ message: 'Что-то не так c редактированием ряда' })
+	}
+}

@@ -1,41 +1,36 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { registerUser, checkIsAuth } from '../redux/features/auth/authSlice'
+import { checkIsAuth, loginUser } from '../../redux/features/auth/authSlice'
 import { toast } from 'react-toastify'
 
-export const RegisterPage = () => {
+export const LoginPage = () => {
 	const [username, setUsername] = useState('')
 	const [password, setPassword] = useState('')
+
 	const { status } = useSelector((state) => state.auth)
 	const isAuth = useSelector(checkIsAuth)
-
-	const navigate = useNavigate()
 	const dispatch = useDispatch()
+	const navigate = useNavigate()
 
 	useEffect(() => {
-		if (status) {
-			toast(status)
-		}
+		if (status) toast(status)
 		if (isAuth) navigate('/')
 	}, [status, isAuth, navigate])
 
 	const handleSubmit = () => {
 		try {
-			dispatch(registerUser({ username, password }))
-			setPassword('')
-			setUsername('')
+			dispatch(loginUser({ username, password }))
 		} catch (error) {
 			console.log(error)
 		}
 	}
-
 	return (
 		<form
 			onSubmit={(e) => e.preventDefault()}
 			className='w-1/4 h-60 mx-auto mt-40'
 		>
-			<h1 className='text-lg text-white text-center'>Регистрация</h1>
+			<h1 className='text-lg text-white text-center'>Авторизация</h1>
 			<label className='text-xs text-gray-400'>
 				Username:
 				<input
@@ -64,13 +59,13 @@ export const RegisterPage = () => {
 					onClick={handleSubmit}
 					className='flex justify-center items-center text-xs bg-gray-600 text-white rounded-sm py-2 px-4'
 				>
-					Подтвердить
+					Войти
 				</button>
 				<Link
-					to='/login'
+					to='/register'
 					className='flex justify-center items-center text-xs text-white'
 				>
-					Уже зарегистрированы ?
+					Нет аккаунта ?
 				</Link>
 			</div>
 		</form>

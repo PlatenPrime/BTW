@@ -5,12 +5,12 @@ import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
 
-import MainPage from "./pages/MainPage";
-import PalletsPage from "./pages/PalletsPage";
-import PalletPage from "./pages/PalletPage";
-import AddPalletPage from "./pages/AddPalletPage";
-import { LoginPage } from "./pages/LoginPage";
-import { RegisterPage } from "./pages/RegisterPage";
+import MainPage from "./pages/Pallet/MainPage";
+import PalletsPage from "./pages/Pallet/PalletsPage";
+import PalletPage from "./pages/Pallet/PalletPage";
+import AddPalletPage from "./pages/Pallet/AddPalletPage";
+import { LoginPage } from "./pages/Auth/LoginPage";
+import { RegisterPage } from "./pages/Auth/RegisterPage";
 import { useDispatch } from "react-redux";
 import { getMe } from "./redux/features/auth/authSlice";
 import { useEffect } from "react";
@@ -42,7 +42,7 @@ function App() {
 
 				<Route path="pallets" element={<PalletsPage />} />
 				<Route path="pallets/:id" element={<PalletPage />} />
-				
+
 				<Route path="pallets/new" element={<AddPalletPage />} />
 
 			</Routes>

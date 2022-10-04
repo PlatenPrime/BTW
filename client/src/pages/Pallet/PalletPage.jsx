@@ -5,13 +5,13 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { useNavigate, useParams } from 'react-router-dom';
 
-import axios from '../utils/axios';
+import axios from '../../utils/axios';
 import { toast } from 'react-toastify';
 
-import { removePallet, updatePallet } from '../redux/features/pallet/palletSlice';
-import { checkIsAuth } from '../redux/features/auth/authSlice';
+import { removePallet, updatePallet } from '../../redux/features/pallet/palletSlice';
+import { checkIsAuth } from '../../redux/features/auth/authSlice';
 
-import PalletItem from '../components/Pallet/PalletItem';
+import PalletItem from '../../components/Pallet/PalletItem';
 
 
 

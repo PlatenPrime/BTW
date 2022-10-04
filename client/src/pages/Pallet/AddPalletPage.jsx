@@ -4,10 +4,10 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { toast } from 'react-toastify';
 
-import { createPallet } from '../redux/features/pallet/palletSlice';
-import { checkIsAuth } from '../redux/features/auth/authSlice';
+import { createPallet } from '../../redux/features/pallet/palletSlice';
+import { checkIsAuth } from '../../redux/features/auth/authSlice';
 
-import PalletItem from '../components/Pallet/PalletItem';
+import PalletItem from '../../components/Pallet/PalletItem';
 
 
 
