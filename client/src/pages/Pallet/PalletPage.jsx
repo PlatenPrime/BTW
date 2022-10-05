@@ -128,7 +128,7 @@ const PalletPage = () => {
 
 
 	return (
-		<div className='mx-auto w-3/4  shadow-lg shadow-slate-400 rounded-b-md'>
+		<div className='mx-auto w-4/5  shadow-lg shadow-slate-400 rounded-b-md'>
 
 
 

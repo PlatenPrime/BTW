@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
 
+import EditIcon from "./../Icons/EditIcon"
+import SaveIcon from "./../Icons/SaveIcon"
+
 const PalletTitle = ({ title, setTitle, isPalletEditing }) => {
 
 	const [isEditingTitle, setIsEditingTitle] = useState(false);
@@ -41,10 +44,14 @@ const PalletTitle = ({ title, setTitle, isPalletEditing }) => {
 
 
 					{isPalletEditing && <button
-						className='text-white  bg-blue-400 rounded-md p-1 mx-2 w-1/5'
+						className='text-white  rounded-md p-1 mx-2 w-1/5'
 						onClick={handlerSaveTitle}
 
-					>Save</button>}
+					>
+						<SaveIcon />
+
+
+					</button>}
 
 				</div>
 
@@ -63,18 +70,24 @@ const PalletTitle = ({ title, setTitle, isPalletEditing }) => {
 					{title ?
 
 						isPalletEditing && <button
-							className='text-white  bg-blue-400 rounded-md p-1 mx-2 w-1/5'
+							className='text-white  rounded-md p-1 mx-2 w-1/5 mx-auto'
 							onClick={handlerEditTitle}
 
-						>Edit</button>
+						>
+
+
+							<EditIcon />
+
+
+						</button>
 
 						:
 
 						isPalletEditing && <button
-							className='text-white flex justify-center  bg-blue-400 rounded-md p-1 mx-2 w-1/5'
+							className='text-white text-sm flex justify-center   rounded-md p-1 w-full'
 							onClick={handlerEditTitle}
 
-						>Add</button>
+						>Добавить название</button>
 
 					}
 

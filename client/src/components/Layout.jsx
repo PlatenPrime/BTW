@@ -7,10 +7,7 @@ const Layout = ({ children }) => {
 		<>
 			<div className='container mx-auto flex'>
 
-				<div>
-					<Sidebar />
-				</div>
-
+				
 
 				<div className='w-full'>
 

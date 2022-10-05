@@ -5,7 +5,7 @@ import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
 
-import MainPage from "./pages/Pallet/MainPage";
+import MainPage from "./pages/MainPage";
 import PalletsPage from "./pages/Pallet/PalletsPage";
 import PalletPage from "./pages/Pallet/PalletPage";
 import AddPalletPage from "./pages/Pallet/AddPalletPage";
