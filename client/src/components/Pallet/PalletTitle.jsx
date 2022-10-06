@@ -59,7 +59,7 @@ const PalletTitle = ({ title, setTitle, isPalletEditing }) => {
 				:
 
 
-				<div className='flex my-1 w-full justify-center pl-1'>
+				<div className='flex my-1 w-full justify-left pl-1'>
 
 
 					{title && <h2

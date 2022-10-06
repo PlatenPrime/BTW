@@ -154,27 +154,41 @@ const PalletPage = () => {
 
 				{isPalletEditing ?
 
-					<div>
-						<button
-							className='text-xl text-white p-2 rounded-lg  m-3   bg-green-600'
-							onClick={handlerPalletSave}
-						>Сохранить</button>
-
-
+					<div className='p-1'>
 
 
 						<button
-							className='text-xl text-red-600 p-2 rounded-lg  m-3   bg-white'
+							className='w-full text-lg text-red-600 p-2 rounded-lg  my-1  bg-white'
 							onClick={handlerCancelPalletEditing}
 
-						>Отмена</button>
+						>
+							Отмена
+
+						</button>
+
+						<button
+							className='w-full text-lg text-white p-2 rounded-lg   my-1  bg-green-600'
+							onClick={handlerPalletSave}
+
+						>
+							Сохранить
+
+						</button>
+
+
+
+
+
 
 
 
 						<button
-							className='text-xl text-white p-2 rounded-lg  m-3   bg-red-600'
+							className='w-full text-lg font-bold  text-red-600 p-2 rounded-lg  my-1  '
 							onClick={handlerPalletRemove}
-						>Удалить</button>
+						>
+							Удалить паллету
+
+						</button>
 
 
 
@@ -187,11 +201,14 @@ const PalletPage = () => {
 
 					:
 
-					<button
-						className='text-xl text-white p-2 rounded-lg  m-3   bg-blue-600'
-						onClick={handlerPalletEdit}
+					<div className='w-full p-1' >
+						<button
+							className=' w-full text-xl text-white p-2 rounded-lg  my-1   bg-blue-500'
+							onClick={handlerPalletEdit}
+						>Редактировать</button>
 
-					>Редактировать</button>}
+					</div>
+				}
 
 
 

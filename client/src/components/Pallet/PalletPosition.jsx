@@ -86,17 +86,17 @@ const PalletPosition = ({ positions, setPositions, isPalletEditing, art, pieces,
 			{isPalletEditing && isPositionEditing ?
 
 
-				<div className='w-3/5 flex p-1'>
+				<div className='w-2/3 flex p-1'>
 
 					<input type="text"
-						className='text-black rounded-md pl-1 bg-white p-1  outline-none mx-1 w-1/2'
+						className='text-black rounded-md pl-1 bg-white bg-opacity-50 p-1  outline-none mx-1 w-1/2'
 						value={newArt}
 						onChange={(e) => setNewArt(e.target.value)}
 
 					/>
 
 					<input type="number"
-						className='text-black rounded-md pl-1 bg-white p-1   outline-none mx-1 w-1/2'
+						className='text-black rounded-md pl-1 bg-white bg-opacity-50 p-1   outline-none mx-1 w-1/2'
 						value={newPieces}
 						onChange={(e) => setNewPieces(e.target.value)}
 					/>
@@ -117,28 +117,29 @@ const PalletPosition = ({ positions, setPositions, isPalletEditing, art, pieces,
 
 			{isPalletEditing &&
 
-				<div className='w-2/5'>
+				<div className='w-1/3'>
 
 
 					{isPositionEditing ?
 
-						<div className='flex  w-2/5 p-1 mx-auto'>
-
+						<div className='flex  justify-end p-1 '>
 
 							<button
-								className='   bg-green-600 text-white p-1 rounded-lg mx-1 '
+								className='   bg-red-600 text-white p-1 rounded-lg mr-1 '
+								onClick={() => handlerPositionDelete(id)}
+							>
+								<DeleteIcon />
+							</button>
+
+							<button
+								className='   bg-green-600 text-white p-1 rounded-lg ml-1 '
 								onClick={() => handlerPositionSave(id)}
 							>
 								<SaveIcon />
 							</button>
 
 
-							<button
-								className='   bg-red-600 text-white p-1 rounded-lg mx-1 '
-								onClick={() => handlerPositionDelete(id)}
-							>
-								<DeleteIcon />
-							</button>
+
 
 
 						</div>
@@ -148,10 +149,10 @@ const PalletPosition = ({ positions, setPositions, isPalletEditing, art, pieces,
 
 
 
-						<div className='flex justify-center'>
+						<div className='flex justify-end'>
 
 							<button
-								className='text-white   rounded-md p-1 mx-auto'
+								className='text-white flex justify-end  rounded-md p-1  '
 								onClick={() => handlerPositionEdit(id)}
 							>
 								<EditIcon />
