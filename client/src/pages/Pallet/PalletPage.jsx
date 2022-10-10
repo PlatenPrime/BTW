@@ -2,7 +2,6 @@ import React, { useCallback } from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
 import { useNavigate, useParams } from 'react-router-dom';
 
 import axios from '../../utils/axios';
@@ -12,9 +11,6 @@ import { removePallet, updatePallet } from '../../redux/features/pallet/palletSl
 import { checkIsAuth } from '../../redux/features/auth/authSlice';
 
 import PalletItem from '../../components/Pallet/PalletItem';
-
-
-
 
 
 
@@ -75,7 +71,7 @@ const PalletPage = () => {
 
 	const removeAttempt = () => {
 		window.confirm("Удалить эту паллету?") && dispatch(removePallet(params.id))
-			&& toast('Паллета был удалена')
+			&& toast('Паллета была удалена')
 			&& navigate('/pallets')
 	}
 
@@ -112,7 +108,6 @@ const PalletPage = () => {
 				positions
 			}
 
-			console.log(updatedPallet);
 			dispatch(updatePallet(updatedPallet))
 			if (status) {
 				toast(status)

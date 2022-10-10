@@ -13,11 +13,13 @@ import PalletItem from '../../components/Pallet/PalletItem';
 
 const AddPalletPage = () => {
 
+	// State
+
 	const [isPalletEditing, setIsPalletEditing] = useState(true)
 
 	const [title, setTitle] = useState('');
 	const [positions, setPositions] = useState([]);
-	;
+
 
 
 	// Hooking
@@ -48,7 +50,7 @@ const AddPalletPage = () => {
 			}
 			dispatch(createPallet(data))
 			navigate('/pallets')
-			console.log(data)
+
 		} catch (error) {
 			console.log(error)
 		}
@@ -69,7 +71,7 @@ const AddPalletPage = () => {
 	return (
 		<div className='border p-5'>
 
-			<h1 className='my-5'>Введи название паллеты  и позиции на ней </h1>
+			<h1 className='my-5 text-white'>Введи название паллеты  и позиции на ней </h1>
 
 			<div className='mx-auto w-3/4  shadow-lg shadow-slate-400 rounded-b-md' >
 
