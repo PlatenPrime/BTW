@@ -21,7 +21,7 @@ const AddRowPage = () => {
 	const [isRowEditing, setIsRowEditing] = useState(true)
 
 	const [title, setTitle] = useState('');
-	const [pallets, setPallets] = useState('');
+	const [pallets, setPallets] = useState([]);
 
 
 
@@ -53,6 +53,7 @@ const AddRowPage = () => {
 				title, pallets
 			}
 			dispatch(createRow(data))
+			console.log(data)
 			navigate('/rows')
 
 		} catch (error) {

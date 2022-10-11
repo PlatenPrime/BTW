@@ -1,18 +1,23 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { Link, NavLink } from "react-router-dom";
 
 
 
 
 
-const RowPallet = () => {
+
+
+const RowPallet = ({ title, id }) => {
+
 
 
 
 
 	return (
+
 		<div>
-			
-Row Pallet
+
+			<Link to={`/pallets/${id}`}>{title}</Link>
 
 
 		</div>

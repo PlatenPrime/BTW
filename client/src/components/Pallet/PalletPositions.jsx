@@ -15,7 +15,7 @@ const PalletPositions = ({ positions, setPositions, isPalletEditing }) => {
 	// States
 
 
-	const [newPositions, setNewPositions] = useState("");
+	const [newPositions, setNewPositions] = useState(null);
 
 
 

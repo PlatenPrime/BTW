@@ -7,8 +7,8 @@ const router = new Router();
 
 
 // Create Pallet
-//http://localhost:3002/api/pallets
-router.post("/", checkAuth, createPallet)
+//http://localhost:3002/api/pallets/:id
+router.post('/:id', checkAuth, createPallet)
 
 // Get All Pallets
 //http://localhost:3002/api/pallets

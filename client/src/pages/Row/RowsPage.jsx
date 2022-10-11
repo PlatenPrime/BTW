@@ -1,26 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+import { toast } from 'react-toastify';
+
+
+import { getAllRows } from '../../redux/features/row/rowSlice';
+
+
+
 import RowBage from "../../components/Row/RowBage";
-import { getAllPallets } from '../../redux/features/pallet/palletSlice';
-
-import { } from "../../redux/features/row/rowSlice";
-
-
 
 
 
 
 const RowsPage = () => {
 
+	// State
+
+
 	const dispatch = useDispatch();
 	const { rows } = useSelector((state) => state.row);
 
 
 	useEffect(() => {
-		dispatch(getAllPallets())
+		dispatch(getAllRows())
 	}, [dispatch])
 
 
@@ -30,6 +35,9 @@ const RowsPage = () => {
 
 
 	return (
+
+
+
 		<div className='max-w-[900px] mx-auto py-10 w-full'  >
 
 			<Link to="new"
@@ -44,9 +52,9 @@ const RowsPage = () => {
 				:
 
 				<div className='mx-auto  w-3/4'>
-					<h2 className='text-xl text-white my-6'>В базе данных на текущий момент есть такие паллеты:</h2>
-					{rows?.map((pallet, idx) => (
-						<RowBage key={idx} pallet={pallet} />
+					<h2 className='text-xl text-white my-6'>В базе данных на текущий момент есть такие ряды:</h2>
+					{rows?.map((row, idx) => (
+						<RowBage key={idx} row={row} />
 					))}
 				</div>
 
@@ -54,6 +62,8 @@ const RowsPage = () => {
 			}
 
 		</div >
+
+
 	);
 };
 

@@ -10,15 +10,31 @@ const initialState = {
 
 export const createPallet = createAsyncThunk(
 	'pallet/createPallet',
-	async (params) => {
+	async ({ title, positions, rowId }) => {
 		try {
-			const { data } = await axios.post('/pallets', params)
+			const { data } = await axios.post(`/pallets/${rowId}`, { title, positions, rowId })
 			return data
 		} catch (error) {
 			console.log(error)
 		}
 	},
 )
+
+
+export const getRowPallets = createAsyncThunk(
+	'pallet/getRowPallets',
+	async (rowId) => {
+		try {
+			const { data } = await axios.get(`/rows/pallets/${rowId}`)
+			return data
+		} catch (error) {
+			console.log(error)
+		}
+	},
+)
+
+
+
 
 
 export const getAllPallets = createAsyncThunk('pallet/getAllPallets', async () => {
@@ -87,6 +103,9 @@ export const palletSlice = createSlice({
 			state.loading = false
 		},
 
+
+
+
 		// Получение всех паллет
 
 		[getAllPallets.pending]: (state) => {
@@ -99,6 +118,21 @@ export const palletSlice = createSlice({
 		[getAllPallets.rejected]: (state) => {
 			state.loading = false
 		},
+
+		// Получение всех паллет ряда
+
+		[getRowPallets.pending]: (state) => {
+			state.loading = true
+		},
+		[getRowPallets.fulfilled]: (state, action) => {
+			state.loading = false
+			state.pallets = action.payload
+		},
+		[getRowPallets.rejected]: (state) => {
+			state.loading = false
+		},
+
+
 
 		// Удаление паллеты
 

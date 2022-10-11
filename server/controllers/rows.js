@@ -1,6 +1,7 @@
 
 
 import Row from "../models/Row.js";
+import Pallet from "../models/Pallet.js";
 
 
 
@@ -78,17 +79,33 @@ export const removeRow = async (req, res) => {
 
 export const updateRow = async (req, res) => {
 	try {
-		const { title, pallets, _id } = req.body
+		const { title, _id } = req.body
 		const row = await Row.findById(_id)
 
 
 		row.title = title;
-		row.pallets = pallets;
 
 		await row.save()
 
 		res.json(row)
 	} catch (error) {
 		res.json({ message: 'Что-то не так c редактированием ряда' })
+	}
+}
+
+
+// Get Row Pallets
+
+export const getRowPallets = async (req, res) => {
+	try {
+		const row = await Row.findById(req.params.id)
+		const list = await Promise.all(
+			row.pallets.map((pallet) => {
+				return Pallet.findById(pallet)
+			}),
+		)
+		res.json(list)
+	} catch (error) {
+		res.json({ message: 'Что-то пошло не так.' })
 	}
 }

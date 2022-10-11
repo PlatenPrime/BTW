@@ -2,7 +2,7 @@ import { Router } from "express";
 
 import { checkAuth } from "../utils/checkAuth.js";
 
-import { createRow, getAllRows, getById, removeRow, updateRow } from "../controllers/rows.js";
+import { createRow, getAllRows, getById, getRowPallets, removeRow, updateRow } from "../controllers/rows.js";
 
 const router = new Router();
 
@@ -30,6 +30,12 @@ router.delete('/:id', checkAuth, removeRow)
 // Update Row
 // http://localhost:3002/api/rows/:id
 router.put('/:id', checkAuth, updateRow)
+
+
+
+// Get Post Comments
+// http://localhost:3002/api/rows/palletts/:id
+router.get('/pallets/:id', getRowPallets)
 
 
 

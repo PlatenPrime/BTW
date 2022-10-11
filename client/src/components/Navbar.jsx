@@ -34,6 +34,7 @@ const Navbar = () => {
 					(<ul className='flex gap-8 '>
 						<li><NavLink to={"/"} className='text-lg text-black hover:text-white' style={({ isActive }) => isActive ? activeStyles : undefined} >Главная</NavLink></li>
 						<li><NavLink to={"rows"} className='text-lg text-black hover:text-white' style={({ isActive }) => isActive ? activeStyles : undefined}>Запасы</NavLink></li>
+						<li><NavLink to={"pallets"} className='text-lg text-black hover:text-white' style={({ isActive }) => isActive ? activeStyles : undefined}>Паллеты</NavLink></li>
 
 					</ul>)
 				}

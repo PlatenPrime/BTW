@@ -1,7 +1,7 @@
 
 
 import Pallet from "../models/Pallet.js";
-import User from "../models/User.js";
+import Row from "../models/Row.js";
 
 
 
@@ -10,7 +10,7 @@ import User from "../models/User.js";
 
 export const createPallet = async (req, res) => {
 	try {
-		const { title, positions } = req.body
+		const { title, positions, rowId } = req.body
 
 
 
@@ -20,6 +20,15 @@ export const createPallet = async (req, res) => {
 
 
 		await newPallet.save()
+
+		try {
+			await Row.findByIdAndUpdate(rowId, {
+				$push: { pallets: newPallet._id },
+			})
+		} catch (error) {
+			console.log(error)
+		}
+
 
 		return res.json(newPallet)
 
