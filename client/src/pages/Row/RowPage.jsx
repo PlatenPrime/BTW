@@ -27,7 +27,7 @@ const RowPage = () => {
 	const [isRowEditing, setIsRowEditing] = useState(false)
 
 	const [title, setTitle] = useState("")
-	const [pallets, setPallets] = useState(null)
+
 
 	const [palletTitle, setPalletTitle] = useState("")
 	const [isPalletCreate, setIsPalletCreate] = useState(false)
@@ -38,6 +38,10 @@ const RowPage = () => {
 
 
 	const { status } = useSelector((state) => state.row)
+	const { pallets } = useSelector((state) => state.pallet)
+
+
+
 	const navigate = useNavigate()
 	const params = useParams()
 	const dispatch = useDispatch()
@@ -56,17 +60,19 @@ const RowPage = () => {
 		const { data } = await axios.get(`/rows/${params.id}`)
 		setRow(data)
 		setTitle(data.title)
-		setPallets(data.pallets)
+
 
 	}, [params.id])
 
 
 	const fetchPallets = useCallback(async () => {
+
 		try {
 			dispatch(getRowPallets(params.id))
 		} catch (error) {
 			console.log(error)
 		}
+
 	}, [params.id, dispatch])
 
 
@@ -155,7 +161,7 @@ const RowPage = () => {
 	}
 
 
-	console.log(pallets)
+
 
 
 	// Render
@@ -177,7 +183,7 @@ const RowPage = () => {
 				title={title}
 				setTitle={setTitle}
 				pallets={pallets}
-				
+
 
 
 			/>

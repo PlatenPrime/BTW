@@ -80,6 +80,9 @@ export const removePallet = async (req, res) => {
 
 
 
+
+
+
 		res.json({ message: 'Паллета была удалена.' })
 	} catch (error) {
 		res.json({ message: 'Что-то не так с удалением паллеты.' })

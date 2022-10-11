@@ -26,7 +26,9 @@ export const getRowPallets = createAsyncThunk(
 	async (rowId) => {
 		try {
 			const { data } = await axios.get(`/rows/pallets/${rowId}`)
+			console.log(data);
 			return data
+			
 		} catch (error) {
 			console.log(error)
 		}

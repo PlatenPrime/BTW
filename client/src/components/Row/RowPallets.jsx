@@ -4,7 +4,7 @@ import RowPallet from "./RowPallet";
 
 
 
-const RowPallets = ({ pallets,  }) => {
+const RowPallets = ({ pallets  }) => {
 
 
 	// States
@@ -40,7 +40,7 @@ const RowPallets = ({ pallets,  }) => {
 
 									title={pallet.title}
 
-									id={pallet.id}
+									id={pallet._id}
 									key={pallet.id}
 
 

@@ -34,7 +34,7 @@ router.put('/:id', checkAuth, updateRow)
 
 
 // Get Post Comments
-// http://localhost:3002/api/rows/palletts/:id
+// http://localhost:3002/api/rows/pallets/:id
 router.get('/pallets/:id', getRowPallets)
 
 

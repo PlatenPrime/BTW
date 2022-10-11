@@ -51,7 +51,6 @@ export const updateRow = createAsyncThunk(
 				`/rows/${updatedRow._id}`,
 				updatedRow,
 			)
-			console.log(data)
 			return data
 		} catch (error) {
 			console.log(error)
