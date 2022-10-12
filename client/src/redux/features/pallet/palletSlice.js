@@ -13,6 +13,7 @@ export const createPallet = createAsyncThunk(
 	async ({ title, positions, rowId }) => {
 		try {
 			const { data } = await axios.post(`/pallets/${rowId}`, { title, positions, rowId })
+			console.log(data)
 			return data
 		} catch (error) {
 			console.log(error)
@@ -28,7 +29,7 @@ export const getRowPallets = createAsyncThunk(
 			const { data } = await axios.get(`/rows/pallets/${rowId}`)
 			console.log(data);
 			return data
-			
+
 		} catch (error) {
 			console.log(error)
 		}

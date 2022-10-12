@@ -12,10 +12,10 @@ export const createPallet = async (req, res) => {
 	try {
 		const { title, positions, rowId } = req.body
 
-
+		const row = rowId;
 
 		const newPallet = new Pallet({
-			title, positions
+			title, positions, row
 		})
 
 
@@ -75,8 +75,18 @@ export const getById = async (req, res) => {
 // Remove pallet
 export const removePallet = async (req, res) => {
 	try {
-		const pallet = await Pallet.findByIdAndDelete(req.params.id)
-		if (!pallet) return res.json({ message: 'Такой паллеты не существует' })
+
+		const pallet = await Pallet.findById(req.params.id)
+
+
+		await Row.findByIdAndUpdate(pallet.row, {
+			$pull: { pallets: req.params.id },
+		})
+
+
+
+		const palletDelete = await Pallet.findByIdAndDelete(req.params.id)
+		if (!palletDelete) return res.json({ message: 'Такой паллеты не существует' })
 
 
 
