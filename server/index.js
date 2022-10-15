@@ -6,6 +6,7 @@ import cors from "cors";
 import authRoute from "./routes/auth.js";
 import palletRoute from "./routes/pallets.js";
 import rowRoute from "./routes/rows.js"
+import artRoute from "./routes/art.js"
 
 
 const app = express();
@@ -13,7 +14,7 @@ dotenv.config();
 
 
 // Constants 
-const PORT = process.env.PORT || 3001
+const PORT = process.env.PORT || 3002
 const DB_USER = process.env.DB_USER
 const DB_PASSWORD = process.env.DB_PASSWORD
 const DB_NAME = process.env.DB_NAME
@@ -31,6 +32,7 @@ app.use(express.json());
 app.use("/api/auth", authRoute);
 app.use("/api/pallets", palletRoute);
 app.use("/api/rows", rowRoute);
+app.use("/api/arts", artRoute);
 
 
 

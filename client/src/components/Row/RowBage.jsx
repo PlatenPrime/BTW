@@ -20,15 +20,19 @@ const RowBage = ({ row }) => {
 
 
 	return (
-		<div className='flex flex-col justify-center my-5 ' >
+		<div className='flex flex-col justify-center my-3 ' >
 
 
 
-			<Link to={`${row._id}`} className='my-1 mx-1 p-1 rounded-md' >
+			<Link to={`${row._id}`} className='' >
 
-				<div className='p-2 flex justify-between bg-blue-400 text-white shadow-lg shadow-slate-400 rounded-md'>
+				<div
+					className='p-2 flex justify-center   text-white   
+					border-x-8 border-x-slate-400
+					border-y-4 border-y-orange-500'>
 
-					<span className='flex items-center text-lg'>Ряд {row.title}</span>
+					<span className='flex  items-center text-xl '>{row.title}</span>
+
 				</div>
 
 			</Link>
