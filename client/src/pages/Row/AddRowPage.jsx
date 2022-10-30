@@ -77,7 +77,7 @@ const AddRowPage = () => {
 
 		<div className='border p-5'>
 
-			<h1 className='my-5 text-white'>Введи название ряда</h1>
+			<h1 className='my-1 text-white flex justify-center'>Введи название ряда</h1>
 
 			<div className='mx-auto w-3/4  shadow-lg shadow-slate-400 rounded-b-md' >
 
@@ -93,18 +93,20 @@ const AddRowPage = () => {
 				/>
 
 
-				<div className='flex my-3'>
+				<div className='flex flex-col my-3 items-center'>
+
 
 					<button
-						className='bg-green-500 p-3 rounded-lg mx-auto block text-white'
+						className='bg-white p-2 rounded-lg mx-auto my-1 mx-1 block text-red-600 w-5/6 flex justify-center'
+						onClick={handlerClearForm}
+					>Очистить форму</button>
+
+					<button
+						className='bg-green-500 p-2 rounded-lg mx-auto my-1 mx-1 block text-white w-5/6'
 						onClick={handlerSubmit}
 					>Сохранить ряд в БД</button>
 
 
-					<button
-						className='bg-red-300 p-3 rounded-lg mx-auto block text-white'
-						onClick={handlerClearForm}
-					>Очистить форму</button>
 
 				</div>
 

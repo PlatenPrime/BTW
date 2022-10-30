@@ -32,14 +32,14 @@ const RowTitle = ({ title, setTitle, isRowEditing }) => {
 
 	return (
 
-		<div className='text-3xl bg-teal-500 w-full my-4 flex '>
+		<div className='text-lg bg-teal-300 bg-opacity-50 w-5/6 my-2 mx-auto rounded-lg'>
 
 			{isEditingTitle ?
 
-				<div className='flex my-1 justify-between w-full pl-1'>
+				<div className='flex my-1 justify-between w-full pl-1 '>
 
 					<input
-						className='text-white rounded-md pl-2 bg-slate-600 bg-opacity-80 outline-none w-4/5 my-1'
+						className='text-gray-600 rounded-md pl-2 bg-opacity-80 outline-none w-4/5 my-1'
 						type="text"
 						value={newTitle}
 						placeholder='Название...'
@@ -47,7 +47,7 @@ const RowTitle = ({ title, setTitle, isRowEditing }) => {
 
 
 					{isRowEditing && <button
-						className='text-white  rounded-md p-1 mx-2 w-1/5'
+						className='text-white  rounded-md p-1 mx-2 w-1/5 mx-auto'
 						onClick={handlerSaveTitle}
 
 					>
@@ -66,7 +66,7 @@ const RowTitle = ({ title, setTitle, isRowEditing }) => {
 
 
 					{title && <h2
-						className='flex items-center pl-2 w-4/5 my-1 '
+						className='flex items-center pl-2 w-4/5 my-1 text-white '
 					>{newTitle}</h2>}
 
 
@@ -87,7 +87,7 @@ const RowTitle = ({ title, setTitle, isRowEditing }) => {
 						:
 
 						isRowEditing && <button
-							className='text-white text-sm flex justify-center   rounded-md p-1 w-full'
+							className='text-white text-lg flex justify-center  rounded-md p-1 w-full'
 							onClick={handlerEditTitle}
 
 						>Добавить название</button>

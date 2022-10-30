@@ -30,7 +30,7 @@ const RowPallets = ({ pallets }) => {
 
 			{newPallets &&
 
-				<div className='border rounded-md'>
+				<div className=''>
 
 					{
 						newPallets.map((pallet) => {

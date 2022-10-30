@@ -197,11 +197,11 @@ const RowPage = () => {
 						isPalletCreate ?
 
 
-							<div>
+							<div className='w-5/6 flex mx-auto flex-col items-center'>
 
 
 								<input
-									className='text-white rounded-md pl-2 bg-slate-600 bg-opacity-80 outline-none w-4/5 my-1'
+									className='text-white rounded-md pl-2 py-3 bg-slate-600 bg-opacity-80 outline-none w-5/6 my-3 flex justify-center'
 									type="text"
 									value={palletTitle}
 									placeholder='Название...'
@@ -212,26 +212,26 @@ const RowPage = () => {
 
 
 
-								<button
-									onClick={handlerCreatePallet}
-									className=' flex justify-center text-lg text-white p-2 rounded-lg  my-1  bg-green-600'
-								>
-
-									Create Pallet
-								</button>
-
-								<button
-									className=' flex justify-center text-lg text-red-600 p-2 rounded-lg  my-1  bg-white'
-									onClick={() => setIsPalletCreate(false)}
-								>Cancel</button>
+								<div className='flex justify-between w-5/6'>
+									<button
+										onClick={handlerCreatePallet}
+										className=' flex justify-center text-md text-white p-1 rounded-lg  my-1  bg-green-600'
+									>
+										Добавить
+									</button>
+									<button
+										className=' flex justify-center text-md text-red-600 p-1 rounded-lg  my-1  bg-white'
+										onClick={() => setIsPalletCreate(false)}
+									>Отменить</button>
+								</div>
 
 
 							</div>
 							:
 							<button
-								className=' flex justify-center text-lg text-green-600 p-2 rounded-lg  my-1  bg-white'
+								className=' flex justify-center text-lg text-white p-1 rounded-lg  my-1 mx-auto  bg-orange-400'
 								onClick={() => setIsPalletCreate(true)}
-							>add new pallet</button>
+							>Добавить паллету</button>
 
 
 					}
@@ -245,7 +245,7 @@ const RowPage = () => {
 
 
 
-			<div className='flex justify-center  w-full  my-3'>
+			<div className='flex justify-center  w-full mt-10  my-3'>
 
 
 
@@ -256,7 +256,7 @@ const RowPage = () => {
 
 
 						<button
-							className='w-full text-lg text-red-600 p-2 rounded-lg  my-1  bg-white'
+							className='w-full text-lg text-white p-2 rounded-lg  my-1  bg-red-600'
 							onClick={handlerCancelRowEditing}
 
 						>
@@ -281,7 +281,7 @@ const RowPage = () => {
 
 
 						<button
-							className='w-full text-lg font-bold  text-red-600 p-2 rounded-lg  my-1  '
+							className='w-full text-lg font-bold  text-red-600 p-2 rounded-lg  my-1 border '
 							onClick={handlerRowRemove}
 						>
 							Удалить ряд
