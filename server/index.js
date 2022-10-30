@@ -41,7 +41,7 @@ app.use("/api/rows", rowRoute);
 async function start() {
 	try {
 		await mongoose.connect(
-			`${process.env.MONGODB_URI}`,
+			`mongodb+srv://${DB_USER}:${DB_PASSWORD}@cluster0.b6qtdz4.mongodb.net/${DB_NAME}?retryWrites=true&w=majority`,
 		)
 		app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
 	} catch (error) {
